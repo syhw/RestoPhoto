@@ -39,7 +39,8 @@ public class FirstScreen extends Activity {
 
 		fileUri = getOutputPhotoFileUri(); // create a file to save the image
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-
+		Toast.makeText(this, "Saving pics to:\n" +
+                 fileUri, Toast.LENGTH_LONG).show();
 		// start the image capture Intent
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 	}
@@ -53,7 +54,7 @@ public class FirstScreen extends Activity {
 		// using Environment.getExternalStorageState() before doing this.
 
 		File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-				Environment.DIRECTORY_PICTURES), "MyCameraApp");
+				Environment.DIRECTORY_PICTURES), "");//"MyCameraApp");
 		// This location works best if you want the created images to be shared
 		// between applications and persist after your app has been uninstalled.
 
@@ -82,13 +83,15 @@ public class FirstScreen extends Activity {
 	                     data.getData(), Toast.LENGTH_LONG).show();
 	        } else if (resultCode == RESULT_CANCELED) {
 	            // User cancelled the image capture
+	        	Toast.makeText(this, "You cancelled the capture.", Toast.LENGTH_LONG).show();
 	        } else {
 	            // Image capture failed, advise user
+	        	Toast.makeText(this, "Capture failed :(", Toast.LENGTH_LONG).show();
 	        }
 	    }
 	}
 	*/
-
+	
 	
 	private SurfaceView preview=null;
 	private SurfaceHolder previewHolder=null;
@@ -261,6 +264,12 @@ public class FirstScreen extends Activity {
 	Camera.PictureCallback photoCallback=new Camera.PictureCallback() {
 		public void onPictureTaken(byte[] data, Camera camera) {
 			new SavePhotoTask().execute(data);
+			//Toast.makeText(FirstScreen.this, "Saved photo in:\n" +
+			//		Environment.getExternalStoragePublicDirectory(
+			//				Environment.DIRECTORY_PICTURES).getName(), 
+			//				Toast.LENGTH_LONG).show();
+			Log.d("saved a photo in dir", Environment.getExternalStoragePublicDirectory(
+							Environment.DIRECTORY_PICTURES).getName());
 			camera.startPreview();
 			inPreview=true;
 		}
@@ -276,6 +285,9 @@ public class FirstScreen extends Activity {
 							"photoresto.jpg");
 
 			if (photo.exists()) {
+			//	Toast.makeText(FirstScreen.this, "Deleted photo:\n" +
+			//			photo.getAbsolutePath(), Toast.LENGTH_LONG).show();
+				Log.d("deleted a photo", photo.getAbsolutePath());
 				photo.delete();
 			}
 
@@ -294,12 +306,11 @@ public class FirstScreen extends Activity {
 	}
 
 	public void onClick(View view) {
-		if (inPreview) {
+		//if (inPreview) {
 			camera.takePicture(null, null, photoCallback);
 				//new PhotoHandler(getApplicationContext()));
-		}
+		//}
 	}
-	
  
 }
 
