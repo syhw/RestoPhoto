@@ -9,8 +9,20 @@
     tools:context=".TakePic" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="154dp"
+        android:layout_marginLeft="60dp"
+        android:onClick="testButton"
+        android:text="Button" />
 
 </RelativeLayout>

@@ -3,6 +3,8 @@ package com.example.restophoto;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 
 public class TakePic extends Activity {
 
@@ -20,4 +22,16 @@ public class TakePic extends Activity {
         return true;
     }
     
+    public void testButton(View view) {
+        GPSTracker gps = new GPSTracker(view.getContext());
+        TextView text = (TextView) findViewById(R.id.textView1);
+        if(gps.canGetLocation()){
+        	double lat = gps.getLatitude(); 
+        	double lon = gps.getLongitude();
+        	text.setText(lat + " " + lon);
+        }
+        else {        	
+        	text.setText("Pas de GPS motherfucker !");
+        }
+    }
 }
