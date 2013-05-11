@@ -8,9 +8,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TakePic" >
 
-    <TextView
+   	<!--  <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/hello_world" /> -->
+    
+    <Button
+        android:id="@+id/capturePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:onClick="onClick"
+        android:text="Take a pic of a restaurant" />
+
+    <ImageView
+        android:id="@+id/previewPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
