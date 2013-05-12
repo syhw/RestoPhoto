@@ -8,20 +8,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".FirstScreen" >
 
-    <android.view.SurfaceView
-        android:id="@+id/cameraPreview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </android.view.SurfaceView>
-    
-    <Button
-        android:id="@+id/capturePhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/cameraPreview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:onClick="onClick"
-        android:text="@string/take_a_pic_of_a_restaurant" />
-    
 </RelativeLayout>
