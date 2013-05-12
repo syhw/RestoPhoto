@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import com.googlecode.tesseract.android.TessBaseAPI;
+//import com.googlecode.tesseract.android.TessBaseAPI;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -134,7 +134,8 @@ public class FirstScreen extends Activity {
 	            
 	            
 	            // Go to review webpage
-	            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(match.get(0).reviewURL));
+	            //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(match.get(0).reviewURL));
+	            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(qype.findBestMatch().reviewURL));
 	            startActivity(browserIntent);
 	            
 	        } else if (resultCode == RESULT_CANCELED) {

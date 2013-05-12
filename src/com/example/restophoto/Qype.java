@@ -72,9 +72,8 @@ public class Qype implements ReviewProvider {
 		return resto.reviewURL;
 	}
 	
-    Resto findBestMatch() {
-    	// TODO
-    	return null;
+    public Resto findBestMatch() {
+    	return restos.get(0);
     }
 
 }

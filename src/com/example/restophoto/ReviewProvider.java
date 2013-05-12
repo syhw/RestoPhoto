@@ -5,6 +5,7 @@ import com.example.restophoto.Resto;
 
 public interface ReviewProvider {
 		
+
 	String getName();
 	
 	void getNearbyRestaurants(double latitude, double longitude);
@@ -12,4 +13,6 @@ public interface ReviewProvider {
 	String getReview(Resto resto);
 	
 	String getReviewURL(Resto resto);
+
+	public Resto findBestMatch();
 }
