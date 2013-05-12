@@ -42,9 +42,9 @@ public class FirstScreen extends Activity {
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(
 				Environment.getExternalStoragePublicDirectory(
 				Environment.DIRECTORY_PICTURES), "photoresto.jpg")));
-		Toast.makeText(this, "Saving pics to:\n" +
-                 "/sdcard/photoresto.jpg", //fileUri, 
-                 Toast.LENGTH_LONG).show();
+		//Toast.makeText(this, "Saving pics to:\n" +
+        //         "/sdcard/photoresto.jpg", //fileUri, 
+        //         Toast.LENGTH_LONG).show();
 		// start the image capture Intent
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 	}
@@ -91,6 +91,8 @@ public class FirstScreen extends Activity {
 	            // http://stackoverflow.com/questions/3505930/make-an-http-request-with-android
 	            // and aggregate their results on the results.xml view/activity
 	            // /TODO
+	            new RequestTask().execute("http://api.qype.com/v1/positions/48.842933,2.348576/places?consumer_key=EYGgS1vansn8b7DemMOw&radius=20");
+	            
 	        } else if (resultCode == RESULT_CANCELED) {
 	            // User cancelled the image capture
 	        	Toast.makeText(this, "You cancelled the capture.", Toast.LENGTH_LONG).show();
