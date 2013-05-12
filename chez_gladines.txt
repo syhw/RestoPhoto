@@ -1,3 +1,3 @@
 https://maps.google.com/maps?q=chez+gladines+paris&hl=en&ie=UTF8&ll=48.828905,2.350559&spn=0.039891,0.090551&hq=chez+gladines&hnear=Paris,+%C3%8Ele-de-France,+France&t=m&z=14&layer=c&cbll=48.828826,2.35074&panoid=6tflNWfZl_cBz51BRnHYVQ&cbp=12,272.21,,0,4.18
 
-
+http://api.qype.com/v1/positions/48.828826,2.35074/places?consumer_key=EYGgS1vansn8b7DemMOw

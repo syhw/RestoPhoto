@@ -39,7 +39,8 @@ public class FirstScreen extends Activity {
 	public static String DEBUG_TAG;
 	
 	GPSTracker gps;
-	List<ReviewProvider> reviewProviders = new LinkedList<ReviewProvider>();
+	//List<ReviewProvider> reviewProviders = new LinkedList<ReviewProvider>();
+	ReviewProvider qype = null;
 	
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 	private Uri fileUri;
@@ -53,14 +54,18 @@ public class FirstScreen extends Activity {
 		//copyRessourceOnSDCard();
 
 		// Add review providers
-        reviewProviders.add(new Qype());
-              
+        //reviewProviders.add(new Qype());
+        qype = new Qype();
+		
         // Check GPS
-        gps = new GPSTracker(getApplicationContext());
-        checkGPS(gps);
+        
+        //gps = new GPSTracker(getApplicationContext());
+        //checkGPS(gps);
+        //qype.getNearbyRestaurants(gps.getLatitude(), gps.getLongitude());
+        qype.getNearbyRestaurants(48.828826, 2.35074);
 		
         /*
-		// create Intent to take a picture and return control to the calling application
+        // create Intent to take a picture and return control to the calling application
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
 		//fileUri = getOutputPhotoFileUri(); // create a file to save the image TODO does not work with cyanogen mod
@@ -115,26 +120,18 @@ public class FirstScreen extends Activity {
 	        if (resultCode == RESULT_OK) {
 	            // Image captured and saved to fileUri specified in the Intent
 	            Toast.makeText(this, "Image saved to:\n" +
-	                     data.getData(), Toast.LENGTH_LONG).show();
-	            // TODO now there is the image in Environment.getExternalStoragePublicDirectory(
-				// Environment.DIRECTORY_PICTURES) + "photoresto.jpg"
-	            // we can use location and photo (OCR + CV) to make API calls to various services 
-	            // http://stackoverflow.com/questions/3505930/make-an-http-request-with-android
-	            // and aggregate their results on the results.xml view/activity
-	            // /TODO
-	            //new RequestTask().execute("http://api.qype.com/v1/positions/48.842933,2.348576/places?consumer_key=EYGgS1vansn8b7DemMOw&radius=20");
-	            
-	            // Find location
-	            checkGPS(gps);
-	            double lat = gps.getLatitude(); 
-	            double lon = gps.getLongitude();
-	                  
+	                     data.getData(), Toast.LENGTH_LONG).show();	            
+	            	
 	            // Retrieve match
 	            List<Resto> match = new LinkedList<Resto>();
-	            for (ReviewProvider provider : reviewProviders) {
+	            /*for (ReviewProvider provider : reviewProviders) {
 	            	List<Resto> candidates = provider.getNearbyRestaurants(lat, lon);
 	            	match.add(findBestMatch(candidates));
-	            }
+	            }*/
+	            
+	            //TODO match.add(qype.findBestMatch(ocr(
+	            //		Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "photoresto.jpg")));            
+	            
 	            
 	            // Go to review webpage
 	            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(match.get(0).reviewURL));
@@ -158,11 +155,6 @@ public class FirstScreen extends Activity {
     	    }
     	}
     }
-	    	
-    Resto findBestMatch(List<Resto> candidates) {
-    	// TODO
-    	return null;
-	}	 
     
     String ocr(String imagePath) {
     	try {
