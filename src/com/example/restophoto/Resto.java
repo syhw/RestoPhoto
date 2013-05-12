@@ -1,6 +1,8 @@
 package com.example.restophoto;
 
 public class Resto {
+	
+	
 	// General information
 	String name = "";       // REQUIRED: restaurant name	
 	String restoURL = "";   // restaurant webpage
